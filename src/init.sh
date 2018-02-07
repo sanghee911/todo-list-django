@@ -1,6 +1,6 @@
 #!/bin/bash
 python check_db_port.py --service-name=db --ip=db --port=5432 && \
-cp /src /shared-volume
+cp -fr /src /shared-volume
 python manage.py makemigrations && \
 python manage.py migrate && \
 python manage.py shell -c "from django.contrib.auth.models import User; User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', '', 'root123')" && \
