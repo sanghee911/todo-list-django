@@ -20,4 +20,6 @@ ENV PYTHONUNBUFFERED=1 \
     DATABASE_PASSWORD=postgres \
     FRONTEND_IP=localhost:8080
 EXPOSE 8000
+# for kubernetes
+RUN mkdir /shared-volume
 ENTRYPOINT ["bash", "/src/init.sh"]
