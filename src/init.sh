@@ -4,4 +4,5 @@ python manage.py makemigrations && \
 python manage.py migrate && \
 python manage.py shell -c "from django.contrib.auth.models import User; User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', '', 'root123')" && \
 # gunicorn django_demo.wsgi -b 0.0.0.0:8000
+cp -fr /src/* /shared-volume/
 gunicorn --workers 3 --bind unix:/shared-volume/django_demo/django.sock django_demo.wsgi:application
